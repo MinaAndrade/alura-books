@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "title": "O Alquimista",
+        "author": "Paulo Coelho",
+        "year": 1988,
+        "genre": "Ficção",
+        "available": true
+    },
+    {
+        "id": 2,
+        "title": "1984",
+        "author": "George Orwell",
+        "year": 1949,
+        "genre": "Distopia",
+        "available": false
+    },
+    {
+        "id": 3,
+        "title": "Dom Casmurro",
+        "author": "Machado de Assis",
+        "year": 1899,
+        "genre": "Romance",
+        "available": true
+    },
+    {
+        "id": 4,
+        "title": "O Senhor dos Anéis",
+        "author": "J.R.R. Tolkien",
+        "year": 1954,
+        "genre": "Fantasia"
+    },
+    {
+        "id": 5,
+        "title": "Uma sobe e puxa a outra",
+        "author": "Christiane Pelajo, Flávia Lippi, Natasha de Caiado Castro, Ana Ferraz, Daniela De Luca e outros",
+        "year": 2023,
+        "genre": "Desenvolvimento pessoal",
+        "available": true
+    },
+    {
+        "title": "O Poder da Ação",
+        "year": 2015,
+        "genre": "Auto Ajuda",
+        "author": "Paulo Vieira",
+        "id": 7
+    },
+    {
+        "id": 8,
+        "title": "Como Fazer Amigos e Influenciar Pessoas",
+        "year": 1936,
+        "genre": "Auto Ajuda",
+        "author": "Dale Carnegie"
+    }
+]
