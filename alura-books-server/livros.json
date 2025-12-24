@@ -5,7 +5,8 @@
         "author": "Paulo Coelho",
         "year": 1988,
         "genre": "Ficção",
-        "available": true
+        "available": true,
+        "src": "/images/oAlquimista.png"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "author": "George Orwell",
         "year": 1949,
         "genre": "Distopia",
-        "available": false
+        "available": false,
+        "src": "/images/1984.png"
     },
     {
         "id": 3,
@@ -21,14 +23,16 @@
         "author": "Machado de Assis",
         "year": 1899,
         "genre": "Romance",
-        "available": true
+        "available": true,
+        "src": "/images/domCasmurro.png" 
     },
     {
         "id": 4,
         "title": "O Senhor dos Anéis",
         "author": "J.R.R. Tolkien",
         "year": 1954,
-        "genre": "Fantasia"
+        "genre": "Fantasia", 
+        "src": "/images/oSenhorDosAneis.png" 
     },
     {
         "id": 5,
@@ -36,20 +40,23 @@
         "author": "Christiane Pelajo, Flávia Lippi, Natasha de Caiado Castro, Ana Ferraz, Daniela De Luca e outros",
         "year": 2023,
         "genre": "Desenvolvimento pessoal",
-        "available": true
+        "available": true,
+        "src": "/images/umaSobeEpuxaAoutra.png" 
     },
     {
         "title": "O Poder da Ação",
         "year": 2015,
         "genre": "Auto Ajuda",
         "author": "Paulo Vieira",
-        "id": 7
+        "id": 7,
+        "src": "/images/oPoderDaAcao.png"
     },
     {
         "id": 8,
         "title": "Como Fazer Amigos e Influenciar Pessoas",
         "year": 1936,
         "genre": "Auto Ajuda",
-        "author": "Dale Carnegie"
+        "author": "Dale Carnegie",
+        "src": "/images/comoFazerAmigos.png"
     }
 ]
