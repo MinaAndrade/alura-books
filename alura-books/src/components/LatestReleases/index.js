@@ -4,14 +4,17 @@ import { Title } from "../Title"
 import CardRecommend from "../CardRecommend"
 
 const LastestReleasesContainer = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    margin-bottom: 80px;
-    background-image: linear-gradient(90deg, #04256d, #326589);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  
+  width: 100%;
+  min-height: 100%;
+  gap: 20px;
+
+  scroll-snap-align: start; 
+  flex-shrink: 0; /* Impede que a seção seja esmagada */
 `
 
 const NewBooksContainer = styled.div`
@@ -35,7 +38,7 @@ const NewBookContainer = styled.div`
 
     img {
         width: 6.5rem;
-        height: 9rem;
+        height: auto;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transition: transform 0.2s;
@@ -43,7 +46,6 @@ const NewBookContainer = styled.div`
 
     p {
         font-size: 1.1rem;
-        text-align: center;
         color: #000000;
     }    
 `

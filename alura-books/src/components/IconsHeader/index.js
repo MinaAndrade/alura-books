@@ -8,6 +8,7 @@ const IconsContainer = styled.ul`
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  flex-shrink: 0; /* Impede os ícones de sumirem */
 `;
 
 const IconItem = styled.li`

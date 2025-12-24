@@ -1,92 +1,113 @@
-import Input from '../Input';
-import Button from '../Button';
-import styled from 'styled-components';
-import { useState } from 'react';
-import { books } from './searchData';
-import { Title } from '../Title';
+import Input from "../Input";
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { Title } from "../Title";
+import { getAllBooks } from "../../services/bookService";
 
 const SearchContainer = styled.section`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-`
+  width: 100%;
+  min-height: 100%;   /* Garante que ocupe a altura disponível do flex: 1 do pai */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Começa do topo para evitar saltos ao filtrar */
+  gap: 20px;
+
+  scroll-snap-align: start; 
+  flex-shrink: 0; /* Impede que a seção seja esmagada */
+`;
 
 const Subtitulo = styled.h3`
-        font-size: 2rem;
-        color: #FFFFFF;
-        font-weight: 400;
-`
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 400;
+`;
 
 const AllResults = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-bottom: 80px;
-`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+`;
 
 const Result = styled.div`
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    margin-top: 80px;
-    cursor: pointer;  
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 10px;
+  
+  width: 15rem;
+  padding: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
-    &:hover {
-        cursor: pointer;
-        border: 1px solid #FFFFFF;
-        padding: 20px;
-        border-radius: 15px;
-    }
+  &:hover {
+    border: 1px solid #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transform: translateY(-5px); /* Efeito visual moderno sem quebrar layout */
+  }
 
-    p {
-        font-size: 18px;
-        color: #FFFFFF;
-        font-weight: 500;
-    }
+  p {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+  }
 
-    img {
-        width: 150px;
-        height: auto;
-    }
-`   
+  img {
+    width: 100px;
+    height: 150px;
+    object-fit: contain; /* Garante que a imagem não distorça */
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+`;
 
 function Search() {
-    const [searchValue, setSearchValue] = useState([]);
+  const [searchValue, setSearchValue] = useState([]);
+  const [books, setBooks] = useState([]);
 
-    return (
-        <SearchContainer>
-            <Title>Já sabe o livro que está procurando?</Title>
-            <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
-            <Input 
-            placeholder="Escreva sua próxima leitura"
-            onChange={ event => {
-                const textFilled = event.target.value.trim().toLowerCase();
+  async function fetchBooks() {
+    const ApiBooks = await getAllBooks();
+    setBooks(ApiBooks);
+  }
 
-                
-                if (!textFilled) {
-                    setSearchValue([]);
-                    return;
-                }
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
-                const result = books.filter( book => book.name.toLowerCase().includes(textFilled) );
-                setSearchValue(result);
+  return (
+    <SearchContainer>
+      <Title>Já sabe o livro que está procurando?</Title>
+      <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
+      <Input
+        placeholder="Escreva sua próxima leitura"
+        onChange={(event) => {
+          const textFilled = event.target.value.trim().toLowerCase();
 
-            }}
-            />
-            <AllResults>
-                { searchValue.map( book => (
-                    <Result key={book.id}>
-                        <p>{book.name}</p>
-                        <img src={book.src} alt={book.name}/>
-                    </Result>
-                )) }
-            </AllResults>
-        </SearchContainer>
-    )
+          if (!textFilled) {
+            setSearchValue([]);
+            return;
+          }
+
+          const result = books.filter((book) =>
+            book.title.toLowerCase().includes(textFilled)
+          );
+          setSearchValue(result);
+        }}
+      />
+      <AllResults>
+        {searchValue.map((book) => (
+          <Result key={book.id}>
+            <p>{book.title}</p>
+            <img src={`http://localhost:8000${book.src}`} alt={book.title} />
+          </Result>
+        ))}
+      </AllResults>
+    </SearchContainer>
+  );
 }
 
 export default Search;
