@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Title } from "../Title";
 import { getAllBooks } from "../../services/bookService";
+import { addFavoriteBook } from "../../services/favoriteService";
 
 const SearchContainer = styled.section`
   width: 100%;
@@ -74,6 +75,10 @@ function Search() {
     setBooks(ApiBooks);
   }
 
+  async function insertFavorite(id) {
+    await addFavoriteBook(id);
+  }
+
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -100,7 +105,7 @@ function Search() {
       />
       <AllResults>
         {searchValue.map((book) => (
-          <Result key={book.id}>
+          <Result key={book.id} onClick={() => insertFavorite(book.id)}>
             <p>{book.title}</p>
             <img src={`http://localhost:8000${book.src}`} alt={book.title} />
           </Result>

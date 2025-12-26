@@ -7,6 +7,16 @@ async function getAllFavoriteBooks() {
   return response.data;
 }
 
+async function addFavoriteBook(id) {
+  await booksAPI.post(`/${id}`);
+}
+
+async function deleteFavoriteBook(id) {
+  await booksAPI.delete(`/${id}`);
+}
+
 export {
-    getAllFavoriteBooks
+    getAllFavoriteBooks,
+    addFavoriteBook,
+    deleteFavoriteBook
 }
